@@ -4,7 +4,8 @@ import Html exposing (Html, Attribute, div, input, text)
 import Html.App as App
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput)
-import String exposing (length)
+import String exposing (any, length)
+import Char exposing (isDigit)
 
 
 main =
@@ -70,6 +71,8 @@ viewValidation model =
         ( color, message ) =
             if (length model.password) < 8 then
                 ( "red", "Password must be greater than 8 characters" )
+            else if (not (any isDigit model.password)) then
+                ( "red", "Password must contain at least one digit" )
             else if model.password /= model.passwordAgain then
                 ( "red", "Passwords do not match!" )
             else
