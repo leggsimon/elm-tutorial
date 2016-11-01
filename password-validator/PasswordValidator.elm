@@ -69,17 +69,21 @@ viewValidation : Model -> Html msg
 viewValidation model =
     let
         ( color, message ) =
-            if (length model.password) < 8 then
-                ( "red", "Password must be greater than 8 characters" )
-            else if (not (any isDigit model.password)) then
-                ( "red", "Password must contain at least one digit" )
-            else if (not (any isUpper model.password)) then
-                ( "red", "Password must contain at least one uppercase letter" )
-            else if (not (any isLower model.password)) then
-                ( "red", "Password must contain at least one lowercase letter" )
+            if (not (isValidPassword model.password)) then
+                ( "red"
+                , "Password must be greater than 8 characters using at least one uppercase letter, one lowercase letter and one numeric digit"
+                )
             else if model.password /= model.passwordAgain then
                 ( "red", "Passwords do not match!" )
             else
                 ( "green", "OK" )
     in
         div [ style [ ( "color", color ) ] ] [ text message ]
+
+
+isValidPassword : String -> Bool
+isValidPassword password =
+    (any isDigit password)
+        && (any isUpper password)
+        && (any isLower password)
+        && ((length password) > 8)
