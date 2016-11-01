@@ -5,7 +5,7 @@ import Html.App as App
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput)
 import String exposing (any, length)
-import Char exposing (isDigit, isUpper)
+import Char exposing (isDigit, isLower, isUpper)
 
 
 main =
@@ -75,6 +75,8 @@ viewValidation model =
                 ( "red", "Password must contain at least one digit" )
             else if (not (any isUpper model.password)) then
                 ( "red", "Password must contain at least one uppercase letter" )
+            else if (not (any isLower model.password)) then
+                ( "red", "Password must contain at least one lowercase letter" )
             else if model.password /= model.passwordAgain then
                 ( "red", "Passwords do not match!" )
             else
