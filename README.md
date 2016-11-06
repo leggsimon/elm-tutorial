@@ -6,3 +6,4 @@ These are the tasks from the Elm Guide at https://guide.elm-lang.org/
 2. [Text Reverser](./text-reverser)
 3. [Password Validation](./password-validator)
 4. [Random Number Generator](./dice-roller)
+5. [Random GIF Generator](./random-gif)
