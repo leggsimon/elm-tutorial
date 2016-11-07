@@ -7,3 +7,4 @@ These are the tasks from the Elm Guide at https://guide.elm-lang.org/
 3. [Password Validation](./03-password-validator)
 4. [Random Number Generator](./04-dice-roller)
 5. [Random GIF Generator](./05-random-gif)
+6. [Clock](./06-clock)
